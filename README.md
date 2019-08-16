@@ -5,7 +5,7 @@
 ## Usage
 
 ```typescript
-new HyperPug(filters).compile(s);
+new HyperPug(filters).parse(s);
 ```
 
 ## Example

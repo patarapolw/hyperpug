@@ -9,7 +9,11 @@ export class HyperPug {
     this.filters = filters;
   }
 
-  public compile(s: string): any[] {
+  public parse(s: string): string {
+    return h("div", this.precompile(s)).innerHTML;
+  }
+
+  private precompile(s: string): any[] {
     let key = "";
     let childrenRows: string[] = [];
     let nodes: any[] = [];
@@ -37,7 +41,7 @@ export class HyperPug {
 
   private generate(key: string, childrenRows: string[]) {
     const c = childrenRows.join("\n");
-    const children = c ? this.compile(c) : undefined;
+    const children = c ? this.precompile(c) : undefined;
 
     let m1 = "";
     let m2: any = {};

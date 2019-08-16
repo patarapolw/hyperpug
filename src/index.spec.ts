@@ -1,43 +1,42 @@
 import { HyperPug } from "./index";
-import h from "hyperscript"
 import pretty from "pretty";
 
-console.log(pretty(h("div", new HyperPug().compile(`
+console.log(pretty(new HyperPug().parse(`
 div
   div hello
   div
     div goodbye
 div good idea
-`.trim())).innerHTML));
+`.trim())));
 
-console.log(pretty(h("div", new HyperPug().compile(`
+console.log(pretty(new HyperPug().parse(`
 div(class=1)
   div hello
   div
     div goodbye
 div good idea
-`.trim())).innerHTML));
+`.trim())));
 
-console.log(pretty(h("div", new HyperPug().compile(`
+console.log(pretty(new HyperPug().parse(`
 div(class=x)
   div hello
   div
     div goodbye
 div good idea
-`.trim())).innerHTML));
+`.trim())));
 
-console.log(pretty(h("div", new HyperPug().compile(`
+console.log(pretty(new HyperPug().parse(`
 div(:class="x")
   div hello
   div
     div goodbye
 div good idea
-`.trim())).innerHTML));
+`.trim())));
 
-console.log(pretty(h("div", new HyperPug().compile(`
+console.log(pretty(new HyperPug().parse(`
 div.
   div hello
   div
     div goodbye
 div good idea
-`.trim())).innerHTML));
+`.trim())));
