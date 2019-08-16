@@ -1,7 +1,7 @@
 {
   "name": "hyperpug",
   "version": "0.1.0",
-  "description": "Modified Pug, based on Hyperscript and YAML, with browserify support",
+  "description": "Modified Pug, based on Hyperscript, with browserify support",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,9 +18,7 @@
   },
   "dependencies": {
     "@types/hyperscript": "0.0.3",
-    "@types/js-yaml": "^3.12.1",
     "hyperscript": "^2.0.2",
-    "js-yaml": "^3.13.1",
     "strip-indent": "^3.0.0"
   },
   "devDependencies": {

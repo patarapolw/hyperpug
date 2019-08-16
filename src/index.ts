@@ -1,6 +1,6 @@
 import stripIndent from "strip-indent";
 import h from "hyperscript";
-import yaml from "js-yaml";
+import { eqDictParser } from "./eqdict";
 
 export class HyperPug {
   private filters: any;
@@ -52,7 +52,7 @@ export class HyperPug {
     m1 = m[1];
 
     if (m[2]) {
-      m2 = yaml.safeLoad(`{${m[2]}}`);
+      m2 = eqDictParser(m[2]);
     }
 
     if (m[3]) {

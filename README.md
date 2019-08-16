@@ -1,6 +1,6 @@
 # HyperPug
 
-Modified [Pug](https://pugjs.org), based on [Hyperscript](https://github.com/hyperhype/hyperscript) and YAML. With [Pug filters](https://pugjs.org/language/filters.html)' support. And of course, browserify support.
+Modified [Pug](https://pugjs.org), based on [Hyperscript](https://github.com/hyperhype/hyperscript). With [Pug filters](https://pugjs.org/language/filters.html)' support. And of course, browserify support.
 
 ## Usage
 
@@ -13,7 +13,7 @@ new HyperPug(filters).compile(s);
 - Input
 
 ```
-div(class: x)
+div(class=x)
   div hello
   div
     div goodbye

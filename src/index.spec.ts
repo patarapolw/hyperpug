@@ -11,7 +11,7 @@ div good idea
 `.trim())).innerHTML));
 
 console.log(pretty(h("div", new HyperPug().compile(`
-div(class: x)
+div(class=1)
   div hello
   div
     div goodbye
@@ -19,7 +19,7 @@ div good idea
 `.trim())).innerHTML));
 
 console.log(pretty(h("div", new HyperPug().compile(`
-div(class:x)
+div(class=x)
   div hello
   div
     div goodbye
@@ -27,7 +27,7 @@ div good idea
 `.trim())).innerHTML));
 
 console.log(pretty(h("div", new HyperPug().compile(`
-div(:class: "x")
+div(:class="x")
   div hello
   div
     div goodbye
