@@ -1,6 +1,6 @@
 # HyperPug
 
-Modified [Pug](https://pugjs.org), based on [Hyperscript](https://github.com/hyperhype/hyperscript). With [Pug filters](https://pugjs.org/language/filters.html)' support. And of course, browserify support.
+[Pug](https://pugjs.org) for browser, based on [Hyperscript](https://github.com/hyperhype/hyperscript). With [Pug filters](https://pugjs.org/language/filters.html)' support.
 
 ## Usage
 
