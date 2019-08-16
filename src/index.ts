@@ -1,6 +1,6 @@
-import stripIndent from "strip-indent";
 import h from "hyperscript";
 import { eqDictParser } from "./eqdict";
+import { stripIndent } from "./strip-indent";
 
 export default class HyperPug {
   private filters: any;
@@ -18,8 +18,18 @@ export default class HyperPug {
     let childrenRows: string[] = [];
     let nodes: any[] = [];
 
+    let isInFilter = false;
+
     for (const r of stripIndent(s).split("\n")) {
-      if (/[A-Z.#:-_]/i.test(r[0])) {
+      if (r[0] && r[0] !== " ") {
+        isInFilter = false;
+      }
+
+      if (/[A-Z.#:\-_]/i.test(r[0]) && !isInFilter) {
+        if (r[0] === ":") {
+          isInFilter = true;
+        }
+
         if (key) {
           nodes.push(this.generate(key, childrenRows));
           childrenRows = [];
@@ -47,6 +57,10 @@ export default class HyperPug {
     let m2: any = {};
     let m3: string | undefined;
 
+    if (key[0] === ":") {
+      return this.buildH(key, null, stripIndent(c));
+    }
+
     const m = /^([^( ]+[^( .])(?:\(([^)]+)\))?(\.)? ?(.+)?$/.exec(key);
 
     if (!m) {
@@ -65,7 +79,7 @@ export default class HyperPug {
 
     m3 = m[4];
 
-    if (m3 && children) {
+    if (m3 && children && children.length > 0) {
       throw new Error("Must have only either child node or string node.");
     }
 
