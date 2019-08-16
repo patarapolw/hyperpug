@@ -1,9 +1,11 @@
 {
   "name": "hyperpug",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Pug for browser, based on Hyperscript",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "prepublish": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": {
@@ -24,5 +26,10 @@
   "devDependencies": {
     "@types/pretty": "^2.0.0",
     "pretty": "^2.0.0"
-  }
+  },
+  "keywords": [
+    "pug",
+    "pugjs",
+    "hyperscript"
+  ]
 }
