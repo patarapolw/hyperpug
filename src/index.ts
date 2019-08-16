@@ -2,7 +2,7 @@ import stripIndent from "strip-indent";
 import h from "hyperscript";
 import { eqDictParser } from "./eqdict";
 
-export class HyperPug {
+export default class HyperPug {
   private filters: any;
 
   constructor(filters: any = {}) {

@@ -5,7 +5,8 @@
 ## Usage
 
 ```typescript
-new HyperPug(filters).parse(s);
+import HyperPug from "hyperpug";
+const html = new HyperPug(filters).parse(s);
 ```
 
 ## Example
