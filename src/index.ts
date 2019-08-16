@@ -56,7 +56,7 @@ export class HyperPug {
     }
 
     if (m[3]) {
-      return this.buildH(m1, m2, c);
+      return this.buildH(m1, m2, stripIndent(c));
     }
 
     m3 = m[4];

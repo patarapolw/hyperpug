@@ -45,8 +45,8 @@ div good idea
 - Output
 
 ```
-<div> div hello
-  div
+<div>div hello
+div
   div goodbye</div>
 <div>good idea</div>
 ```
