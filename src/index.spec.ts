@@ -1,4 +1,4 @@
-import { HyperPug } from "./index";
+import HyperPug from "./index";
 import pretty from "pretty";
 
 console.log(pretty(new HyperPug().parse(`
