@@ -23,7 +23,7 @@ export function eqDictParser(s: string) {
 }
 
 function eqDictConsume(s: string) {
-  s = s.replace(/^[=,\s]+/, "");
+  s = s.replace(/^[ =,\s]+/, "");
 
   if (!s) {
     return ["" ,""];
@@ -38,7 +38,7 @@ function eqDictConsume(s: string) {
         }
       });
 
-      return [s.substr(1, iSplitter - 1), s.substr(iSplitter)];
+      return [s.substr(1, iSplitter - 1), s.substr(iSplitter + 1)];
     } else {
       let iSplitter = s.length;
       s.split("").forEach((c, i) => {

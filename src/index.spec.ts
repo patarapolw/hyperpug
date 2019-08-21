@@ -53,7 +53,7 @@ console.log(pretty(new HyperPug({
         - Clone the project to use your own!
     - [Pug](https://pugjs.org) with [SCSS](https://sass-lang.com/) and custom markdown support
     - HTML conversion is now done at server-side
-:scss
+style.
     li li {
         font-size: 0.8em;
     }
