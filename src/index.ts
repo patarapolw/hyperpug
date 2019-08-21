@@ -25,7 +25,7 @@ export default class HyperPug {
         isInFilter = false;
       }
 
-      if (/[A-Z.#:\-_]/i.test(r[0]) && !isInFilter) {
+      if (/\S/.test(r[0]) && !isInFilter) {
         if (r[0] === ":") {
           isInFilter = true;
         }
@@ -79,9 +79,9 @@ export default class HyperPug {
 
     m3 = m[4];
 
-    if (m3 && children && children.length > 0) {
-      throw new Error("Must have only either child node or string node.");
-    }
+    // if (m3 && children && children.length > 0) {
+    //   throw new Error("Must have only either child node or string node.");
+    // }
 
     return this.buildH(m1, m2, m3 || children);
   }
@@ -107,6 +107,10 @@ export default class HyperPug {
       }
     }
 
-    return h(key, {attrs: attrs || {}}, children);
+    try {
+      return h(key, {attrs: attrs || {}}, children);
+    } catch(e) {
+      return h("div", {attrs: attrs || {}}, children)
+    }
   }
 }

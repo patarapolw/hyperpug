@@ -1,6 +1,6 @@
 {
   "name": "hyperpug",
-  "version": "0.1.4",
+  "version": "0.1.7",
   "description": "Pug for browser, based on Hyperscript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

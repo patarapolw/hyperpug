@@ -45,16 +45,19 @@ console.log(pretty(new HyperPug({
   markdown(x: string){return x;},
   scss(x: string){return `<!-- ${x} -->`;}
 }).parse(`
-:markdown
-    ### Update (2019-08-16)
 
-    - Custom markdown
-        - Tables and image resize with [Showdown.js](https://github.com/showdownjs/showdown), also, GitHub flavor.
-        - Clone the project to use your own!
-    - [Pug](https://pugjs.org) with [SCSS](https://sass-lang.com/) and custom markdown support
-    - HTML conversion is now done at server-side
-style.
-    li li {
-        font-size: 0.8em;
-    }
+:scss
+  From <https://www.yellowbridge.com/chinese/listsearch.php?listID=44>
+
+  ### Sentence quiz
+
+  Please see [](slide:github:patarapolw/zhdiary/slides/身体1.md)
+
+  Highlight text and press "x" inside the presentation to speak.
+
+===
+`.trim())));
+
+console.log(pretty(new HyperPug().parse(`
+.w-100.mt-3: h3.text-center 天地玄黃，宇宙洪荒。
 `.trim())));

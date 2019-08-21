@@ -1,6 +1,7 @@
 import { stripIndent } from "./strip-indent";
 
 console.log(stripIndent(`
+
     ### Update (2019-08-16)
 
     - Custom markdown
