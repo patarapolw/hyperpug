@@ -2,7 +2,18 @@ import h from "hyperscript";
 import { eqDictParser } from "./eqdict";
 import { stripIndent } from "./strip-indent";
 
-export default class HyperPug {
+export function compile(options: any = {}) {
+  const { filters } = options
+  const hp = new HyperPug(filters || {});
+
+  return (s: string) => hp.parse(s);
+}
+
+export function render(s: string) {
+  return compile()(s);
+}
+
+export class HyperPug {
   private filters: any;
 
   constructor(filters: any = {}) {
@@ -61,7 +72,7 @@ export default class HyperPug {
       return this.buildH(key, null, stripIndent(c));
     }
 
-    const m = /^([^( ]+[^( .])(?:\(([^)]+)\))?(\.)? ?(.+)?$/.exec(key);
+    const m = /^([^( ]+[^( .:])(?:\(([^)]+)\))?([.:])? ?(.+)?$/.exec(key);
 
     if (!m) {
       return this.buildH(key, null, children);
@@ -73,8 +84,10 @@ export default class HyperPug {
       m2 = eqDictParser(m[2]);
     }
 
-    if (m[3]) {
+    if (m[3] === ".") {
       return this.buildH(m1, m2, stripIndent(c));
+    } else if (m[3] === ":") {
+      return this.buildH(m1, m2, this.precompile(m[4]));
     }
 
     m3 = m[4];
@@ -88,13 +101,14 @@ export default class HyperPug {
 
   private buildH(key: string, attrs: any = null, children?: string | any[]) {
     if (key[0] === ":") {
-      const fn = this.filters[key.substr(1)];
+      const filterName = key.substr(1);
+      const fn = this.filters[filterName];
       if (!fn) {
-        throw new Error("Filter not installed");
+        throw new Error(`Filter not installed: ${filterName}`);
       }
 
       if (typeof children !== "string") {
-        throw new Error("Nothing to feed to filter");
+        throw new Error(`Nothing to feed to filter: ${filterName}`);
       }
 
       return h("div", {innerHTML: fn(children)})
@@ -114,3 +128,10 @@ export default class HyperPug {
     }
   }
 }
+
+export const pug = {
+  compile,
+  render
+};
+
+export default pug;

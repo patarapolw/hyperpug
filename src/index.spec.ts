@@ -1,63 +1,63 @@
-import HyperPug from "./index";
+import pug from "./index";
 import pretty from "pretty";
+import { stripIndent } from "./strip-indent";
 
-console.log(pretty(new HyperPug().parse(`
-div
-  div hello
-  div
-    div goodbye
-div good idea
-`.trim())));
 
-console.log(pretty(new HyperPug().parse(`
-div(class=1)
-  div hello
-  div
-    div goodbye
-div good idea
-`.trim())));
+describe("pug", () => {
+  [
+    `
+    div
+      div hello
+      div
+        div goodbye
+    div good idea`,
+    `
+    div(class=1)
+      div hello
+      div
+        div goodbye
+    div good idea`,
+    `
+    div(class=x)
+      div hello
+      div
+        div goodbye
+    div good idea`,
+    `
+    div(:class="x")
+      div hello
+      div
+        div goodbye
+    div good idea`,
+    `
+    div.
+      div hello
+      div
+        div goodbye
+    div good idea`,
+    `.w-100.mt-3: h3.text-center 天地玄黃，宇宙洪荒。`
+  ].forEach((el) => {
+    it("render", () => {
+      console.log(pretty(pug.render(stripIndent(el))));
+    });
+  });
 
-console.log(pretty(new HyperPug().parse(`
-div(class=x)
-  div hello
-  div
-    div goodbye
-div good idea
-`.trim())));
+  [
+    `
+    :scss
+      From <https://www.yellowbridge.com/chinese/listsearch.php?listID=44>
 
-console.log(pretty(new HyperPug().parse(`
-div(:class="x")
-  div hello
-  div
-    div goodbye
-div good idea
-`.trim())));
+      ### Sentence quiz
 
-console.log(pretty(new HyperPug().parse(`
-div.
-  div hello
-  div
-    div goodbye
-div good idea
-`.trim())));
+      Please see [](slide:github:patarapolw/zhdiary/slides/身体1.md)
 
-console.log(pretty(new HyperPug({
-  markdown(x: string){return x;},
-  scss(x: string){return `<!-- ${x} -->`;}
-}).parse(`
-
-:scss
-  From <https://www.yellowbridge.com/chinese/listsearch.php?listID=44>
-
-  ### Sentence quiz
-
-  Please see [](slide:github:patarapolw/zhdiary/slides/身体1.md)
-
-  Highlight text and press "x" inside the presentation to speak.
-
-===
-`.trim())));
-
-console.log(pretty(new HyperPug().parse(`
-.w-100.mt-3: h3.text-center 天地玄黃，宇宙洪荒。
-`.trim())));
+      Highlight text and press "x" inside the presentation to speak.`
+  ].forEach((el) => {
+    it("compile", () => {
+      console.log(pretty(pug.compile({filters: {
+        markdown(x: string){return `<!-- Markdown: ${x} -->`;},
+        scss(x: string){return `<!-- SCSS: ${x} -->`;}
+      }})(el)));
+    })
+  })
+});

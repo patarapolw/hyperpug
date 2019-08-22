@@ -5,8 +5,8 @@
 ## Usage
 
 ```typescript
-import HyperPug from "hyperpug";
-const html = new HyperPug(filters).parse(s);
+import pug from "hyperpug";
+const html = pug.compile({filters})(s);  // Or, pug.render(s);
 ```
 
 ## Example
