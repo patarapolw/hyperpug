@@ -1,5 +1,5 @@
 import { stripIndent } from "./strip-indent";
-import expect from "expect";
+import assert from "assert";
 
 describe("stripIndent", () => {
     [{ text: `
@@ -14,7 +14,7 @@ describe("stripIndent", () => {
         it("Mixed with blank no-indent line", () => {
             const output = stripIndent(el.text);
             console.log(output);
-            expect(/[ \t]/.test(output[0])).toBeFalsy();
+            assert(!/[ \t]/.test(output[0]));
         })
     })
 })
