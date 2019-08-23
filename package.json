@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "prepare": "tsc",
-    "test": "ts-mocha src/**/*.spec.ts"
+    "test": "ts-mocha tests/**/*.spec.ts"
   },
   "author": {
     "name": "Pacharapol Withayasakpunt",

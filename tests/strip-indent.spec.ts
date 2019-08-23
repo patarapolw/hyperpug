@@ -1,4 +1,4 @@
-import { stripIndent } from "./strip-indent";
+import { stripIndent } from "../src/strip-indent";
 import assert from "assert";
 
 describe("stripIndent", () => {

@@ -1,6 +1,6 @@
-import pug from "./index";
+import pug from "../src/index";
 import pretty from "pretty";
-import { stripIndent } from "./strip-indent";
+import { stripIndent } from "../src/strip-indent";
 
 
 describe("pug", () => {

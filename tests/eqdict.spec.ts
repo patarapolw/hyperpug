@@ -1,4 +1,4 @@
-import { eqDictParser } from "./eqdict";
+import { eqDictParser } from "../src/eqdict";
 
 describe("eqDict", () => {
   [
