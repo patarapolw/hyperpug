@@ -1,11 +1,11 @@
 {
   "name": "hyperpug",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Pug for browser, based on Hyperscript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "prepare": "tsc",
+    "prepublishOnly": "tsc",
     "test": "ts-mocha tests/**/*.spec.ts"
   },
   "author": {

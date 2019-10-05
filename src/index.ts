@@ -2,7 +2,11 @@ import h from "hyperscript";
 import { eqDictParser } from "./eqdict";
 import { stripIndent } from "./strip-indent";
 
-export function compile(options: any = {}) {
+export interface IHyperPugFilters {
+  [name: string]: (s: string) => string | Element;
+}
+
+export function compile(options: {filters?: IHyperPugFilters} = {}) {
   const { filters } = options
   const hp = new HyperPug(filters || {});
 
@@ -14,9 +18,9 @@ export function render(s: string) {
 }
 
 export class HyperPug {
-  private filters: any;
+  private filters: IHyperPugFilters;
 
-  constructor(filters: any = {}) {
+  constructor(filters: IHyperPugFilters = {}) {
     this.filters = filters;
   }
 
@@ -24,10 +28,10 @@ export class HyperPug {
     return h("div", this.precompile(s)).innerHTML;
   }
 
-  private precompile(s: string): any[] {
+  private precompile(s: string): Element[] {
     let key = "";
     let childrenRows: string[] = [];
-    let nodes: any[] = [];
+    let nodes: Element[] = [];
 
     let isInFilter = false;
 
@@ -65,7 +69,7 @@ export class HyperPug {
     const children = c ? this.precompile(c) : undefined;
 
     let m1 = "";
-    let m2: any = {};
+    let m2: Record<string, string> | null = null;
     let m3: string | undefined;
 
     if (key[0] === ":") {
@@ -99,7 +103,7 @@ export class HyperPug {
     return this.buildH(m1, m2, m3 || children);
   }
 
-  private buildH(key: string, attrs: any = null, children?: string | any[]) {
+  private buildH(key: string, attrs: Record<string, string> | null, children?: string | Element[]) {
     if (key[0] === ":") {
       const filterName = key.substr(1);
       const fn = this.filters[filterName];

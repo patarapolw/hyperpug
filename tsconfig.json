@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
+    "target": "esnext",
+    "module": "esnext",
     "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
@@ -11,9 +11,11 @@
     "sourceMap": false,
     "noImplicitReturns": true,
     "noImplicitAny": true,
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "downlevelIteration": true,
     "declaration": true,
+    "declarationMap": true,
     "lib": ["es2015", "es7", "es6", "dom", "es2017"],
     "types": [
       "mocha",
@@ -21,7 +23,7 @@
     ]
   },
   "include": [
-    "src/**/*", "tests/**/*.ts"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules",
