@@ -1,0 +1,17 @@
+<div id="hyperpug">Test</div>
+<script src="../umd/index.min.js"></script>
+<script>
+const hp = new HyperPug({
+  hidden: (s) => {
+    return `<!-- ${JSON.stringify(s)} -->`
+  },
+})
+
+document.getElementById('hyperpug').innerHTML = hp.parse(`
+  div(class="x")
+    div hello
+    div
+      div goodbye
+  div good idea
+`)
+</script>

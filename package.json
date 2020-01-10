@@ -1,39 +1,55 @@
 {
   "name": "hyperpug",
-  "version": "0.2.1",
+  "version": "1.0.4",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "umd"
+  ],
   "description": "Pug for browser, based on Hyperscript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "scripts": {
-    "prepublishOnly": "tsc",
-    "test": "ts-mocha tests/**/*.spec.ts"
-  },
   "author": {
     "name": "Pacharapol Withayasakpunt",
     "email": "patarapolw@gmail.com",
     "url": "https://polvcode.dev"
   },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/patarapolw/hyperpug.git"
-  },
-  "dependencies": {
-    "@types/hyperscript": "0.0.3",
-    "hyperscript": "^2.0.2"
-  },
-  "devDependencies": {
-    "@types/mocha": "^5.2.7",
-    "@types/node": "^12.7.2",
-    "@types/pretty": "^2.0.0",
-    "mocha": "^6.2.0",
-    "pretty": "^2.0.0",
-    "ts-mocha": "^6.0.0",
-    "typescript": "^3.5.3"
-  },
+  "repository": "github:patarapolw/hyperpug",
   "keywords": [
     "pug",
-    "pugjs",
     "hyperscript"
-  ]
+  ],
+  "scripts": {
+    "prebuild": "yarn lint && yarn test",
+    "build": "tsc -p src/tsconfig.json",
+    "browserify": "parcel build -d umd -o index.min.js ./browser.ts",
+    "test": "ts-mocha --paths -p tests/tsconfig.json tests/**/*.spec.ts",
+    "prepack": "yarn build && yarn browserify",
+    "lint": "eslint '**'"
+  },
+  "dependencies": {
+    "@patarapolw/eqdict": "^1.0.6",
+    "hyperscript": "^2.0.2",
+    "indent-utils": "^1.0.2"
+  },
+  "devDependencies": {
+    "@types/hyperscript": "^0.0.3",
+    "@types/js-yaml": "^3.12.1",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^13.1.6",
+    "@typescript-eslint/eslint-plugin": "^2.15.0",
+    "@typescript-eslint/parser": "^2.15.0",
+    "eslint": ">=6.2.2",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": ">=2.18.0",
+    "eslint-plugin-json": "^2.0.1",
+    "eslint-plugin-node": ">=9.1.0",
+    "eslint-plugin-promise": ">=4.2.1",
+    "eslint-plugin-standard": ">=4.0.0",
+    "js-yaml": "^3.13.1",
+    "mocha": "^6.0.0",
+    "parcel-bundler": "^1.12.4",
+    "ts-mocha": "^6.0.0",
+    "typescript": "^3.7.4"
+  }
 }

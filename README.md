@@ -1,53 +1,49 @@
 # HyperPug
 
-[Pug](https://pugjs.org) for browser, based on [Hyperscript](https://github.com/hyperhype/hyperscript). With [Pug filters](https://pugjs.org/language/filters.html)' support.
+[![npm version](https://badge.fury.io/js/hyperpug.svg)](https://badge.fury.io/js/hyperpug)
+
+Pug for browser/Electron, based on Hyperscript. With Pug filters' support.
 
 ## Usage
 
 ```typescript
-import pug from "hyperpug";
-const html = pug.compile({filters})(s);  // Or, pug.render(s);
+import HyperPug from 'hyperpug'
+const hp = new HyperPug()
+
+console.log(hp.parse(HYPERPUG_STRING))
 ```
 
-## Example
+## Usage with filters
 
-- Input
+```typescript
+import HyperPug from 'hyperpug'
+const hp = new HyperPug({
+  hidden: (s) => {
+    return `<!-- ${JSON.stringify(s)} -->`
+  }
+})
 
-```
-div(class=x)
-  div hello
-  div
-    div goodbye
-div good idea
-```
-
-- Output
-
-```
-<div class="x">
-  <div>hello</div>
-  <div>
-    <div>goodbye</div>
-  </div>
-</div>
-<div>good idea</div>
+console.log(hp.parse(HYPERPUG_STRING))
 ```
 
-- Input
+## Usage on the browser
 
-```
-div.
-  div hello
-  div
-    div goodbye
-div good idea
-```
+```html
+<div id="hyperpug"></div>
+<script src="https://unpkg.com/hyperpug@:version/umd/index.min.js"></script>
+<script>
+const hp = new HyperPug({
+  hidden: (s) => {
+    return `<!-- ${JSON.stringify(s)} -->`
+  }
+})
 
-- Output
-
-```
-<div>div hello
-div
-  div goodbye</div>
-<div>good idea</div>
+document.getElementById("hyperpug").innerHTML = hp.parse(`
+  div(class="x")
+    div hello
+    div
+      div goodbye
+  div good idea
+`)
+</script>
 ```

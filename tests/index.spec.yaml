@@ -1,0 +1,36 @@
+HyperPug:
+  - name: Basic
+    input: |2
+      div(class="x")
+        div hello
+        div
+          div goodbye
+      div good idea
+    expected: <div class="x"><div>hello</div><div><div>goodbye</div></div></div><div>good idea</div>
+  - name: With extra indentation and non-standard attributes
+    input: |2
+        div(:class="x")
+          div hello
+          div
+            div goodbye
+        div good idea
+    expected: <div :class="x"><div>hello</div><div><div>goodbye</div></div></div><div>good idea</div>
+  - name: With number
+    input: |2
+      div(class=1)
+        div hello
+        div
+          div goodbye
+      div good idea
+    expected: <div class="1"><div>hello</div><div><div>goodbye</div></div></div><div>good idea</div>
+  - name: With raw string
+    input: |2
+      div.
+        div hello
+        div
+          div goodbye
+      div good idea
+    expected: "<div>div hello\ndiv\n  div goodbye</div><div>good idea</div>"
+  - name: One liner
+    input: ".w-100.mt-3: h3.text-center 天地玄黃，宇宙洪荒。"
+    expected: <div class="w-100 mt-3"><h3 class="text-center">天地玄黃，宇宙洪荒。</h3></div>
