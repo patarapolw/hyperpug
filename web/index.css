@@ -1,0 +1,39 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.view {
+  width: 100%;
+  border: 1px solid lightgray;
+  min-height: 40vh;
+  overflow: scroll;
+  margin: 0.2rem;
+}
+
+#output {
+  padding: 1rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.columns {
+  display: flex;
+  flex-direction: row;
+  max-height: 100vh;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: 770px) {
+  .columns {
+    flex-direction: column;
+  }
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+}

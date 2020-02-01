@@ -66,7 +66,7 @@ export default class HyperPug {
       return this.buildH(key, null, stripIndent(c))
     }
 
-    const m = /^([^( ]+[^( .:])(?:\(([^)]+)\))?([.:])? ?(.+)?$/.exec(key)
+    const m = /^([^( ]*[^( .:])(?:\(([^)]+)\))?([.:])? ?(.+)?$/.exec(key)
 
     if (!m) {
       return this.buildH(key, null, children)
