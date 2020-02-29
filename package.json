@@ -1,14 +1,15 @@
 {
   "name": "hyperpug",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "license": "MIT",
   "files": [
     "lib",
-    "umd",
-    "src"
+    "src",
+    "tsconfig.json"
   ],
   "description": "Pug for browser, based on Hyperscript",
   "main": "lib/index.js",
+  "unpkg": "lib/index.min.js",
   "types": "lib/index.d.ts",
   "author": {
     "name": "Pacharapol Withayasakpunt",
@@ -23,9 +24,10 @@
   "scripts": {
     "prebuild": "yarn lint && yarn test",
     "build": "tsc -p src/tsconfig.json",
-    "browserify": "parcel build -d umd -o index.min.js ./browser.ts",
+    "browserify": "parcel build -d lib -o index.min.js ./browser.ts",
     "test": "ts-mocha --paths -p tests/tsconfig.json tests/**/*.spec.ts",
-    "test:web": "parcel web/index.pug",
+    "web": "parcel web/index.html",
+    "deploy": "parcel build web/index.html && gh-pages -d dist",
     "prepack": "yarn build && yarn browserify",
     "lint": "eslint '**'"
   },
@@ -49,10 +51,10 @@
     "eslint-plugin-node": ">=9.1.0",
     "eslint-plugin-promise": ">=4.2.1",
     "eslint-plugin-standard": ">=4.0.0",
+    "gh-pages": "^2.2.0",
     "js-yaml": "^3.13.1",
     "mocha": "^6.0.0",
     "parcel-bundler": "^1.12.4",
-    "pug": "^2.0.4",
     "ts-mocha": "^6.0.0",
     "typescript": "^3.7.4"
   }
