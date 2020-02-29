@@ -27,7 +27,7 @@
     "browserify": "parcel build -d lib -o index.min.js ./browser.ts",
     "test": "ts-mocha --paths -p tests/tsconfig.json tests/**/*.spec.ts",
     "web": "parcel web/index.html",
-    "deploy": "parcel build web/index.html && gh-pages -d dist",
+    "deploy": "parcel build --public-url /hyperpug web/index.html && gh-pages -d dist",
     "prepack": "yarn build && yarn browserify",
     "lint": "eslint '**'"
   },
