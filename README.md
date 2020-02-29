@@ -30,7 +30,7 @@ console.log(hp.parse(HYPERPUG_STRING))
 
 ```html
 <div id="hyperpug"></div>
-<script src="https://unpkg.com/hyperpug@:version/umd/index.min.js"></script>
+<script src="https://unpkg.com/hyperpug@:version"></script>
 <script>
 const hp = new HyperPug({
   hidden: (s) => {
