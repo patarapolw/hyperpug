@@ -2,6 +2,8 @@ import h from 'hyperscript'
 import { stripIndent } from 'indent-utils'
 import eqdict from '@patarapolw/eqdict'
 
+import { tokenize } from './tokenize'
+
 export type IHyperPugFilter = (s: string) => string | Element
 
 export interface IHyperPugFilters {
@@ -59,38 +61,30 @@ export default class HyperPug {
     const c = childrenRows.join('\n')
     const children = c ? this.precompile(c) : undefined
 
-    let m1 = ''
+    const m1 = ''
     let m2: Record<string, string> | null = null
 
     if (key[0] === ':') {
       return this.buildH(key, null, stripIndent(c))
     }
 
-    const m = /^([^( ]*[^( .:])(?:\(([^)]+)\))?([.:])? ?(.+)?$/.exec(key)
+    const { key: k1, dict, post } = tokenize(key)
 
-    if (!m) {
+    if (!dict) {
       return this.buildH(key, null, children)
     }
 
-    m1 = m[1]
-
-    if (m[2]) {
-      m2 = eqdict(m[2])
+    if (dict) {
+      m2 = eqdict(dict)
     }
 
-    if (m[3] === '.') {
+    if (post.startsWith('.')) {
       return this.buildH(m1, m2, stripIndent(c))
-    } else if (m[3] === ':') {
-      return this.buildH(m1, m2, this.precompile(m[4]))
+    } else if (post.startsWith(':')) {
+      return this.buildH(m1, m2, this.precompile(post.substr(1).trim()))
     }
 
-    const m3 = m[4]
-
-    // if (m3 && children && children.length > 0) {
-    //   throw new Error("Must have only either child node or string node.");
-    // }
-
-    return this.buildH(m1, m2, m3 || children)
+    return this.buildH(m1, m2, post.trim() || children)
   }
 
   private buildH (key: string, attrs: Record<string, string> | null, children?: string | Element[]) {
