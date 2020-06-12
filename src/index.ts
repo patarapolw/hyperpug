@@ -61,30 +61,29 @@ export default class HyperPug {
     const c = childrenRows.join('\n')
     const children = c ? this.precompile(c) : undefined
 
-    const m1 = ''
-    let m2: Record<string, string> | null = null
+    if (key[0] === ':') {
+      return this.buildH(key, null, stripIndent(c))
+    }
+
+    let d: Record<string, string> | null = null
 
     if (key[0] === ':') {
       return this.buildH(key, null, stripIndent(c))
     }
 
-    const { key: k1, dict, post } = tokenize(key)
-
-    if (!dict) {
-      return this.buildH(key, null, children)
-    }
+    const { key: k1, dict, suffix, content } = tokenize(key)
 
     if (dict) {
-      m2 = eqdict(dict)
+      d = eqdict(dict)
     }
 
-    if (post.startsWith('.')) {
-      return this.buildH(m1, m2, stripIndent(c))
-    } else if (post.startsWith(':')) {
-      return this.buildH(m1, m2, this.precompile(post.substr(1).trim()))
+    if (suffix === '.') {
+      return this.buildH(k1, d, stripIndent(c))
+    } else if (suffix === ':') {
+      return this.buildH(k1, d, this.precompile(content))
     }
 
-    return this.buildH(m1, m2, post.trim() || children)
+    return this.buildH(k1, d, content || children)
   }
 
   private buildH (key: string, attrs: Record<string, string> | null, children?: string | Element[]) {
