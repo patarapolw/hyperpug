@@ -22,7 +22,7 @@ HyperPug:
         div
           div goodbye
       div good idea
-    expected: <div class="1"><div>hello</div><div><div>goodbye</div></div></div><div>good idea</div>
+    expected: <div class=1><div>hello</div><div><div>goodbye</div></div></div><div>good idea</div>
   - name: With raw string
     input: |2
       div.
@@ -57,3 +57,6 @@ HyperPug:
         - a-list: 1
       ```
       </markdown></details>
+  - name: Vue template
+    input: div(v-if="isCool" :role="role" @click="doClick")
+    expected: <div v-if="isCool" :role="role" @click="doClick"></div>

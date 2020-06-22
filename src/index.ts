@@ -1,10 +1,9 @@
-import h from 'hyperscript'
 import { stripIndent } from 'indent-utils'
-import eqdict from '@patarapolw/eqdict'
 
 import { tokenize } from './tokenize'
+import { h } from './h'
 
-export type IHyperPugFilter = (s: string) => string | Element
+export type IHyperPugFilter = (s: string) => string
 
 export interface IHyperPugFilters {
   [name: string]: IHyperPugFilter
@@ -18,13 +17,13 @@ export default class HyperPug {
   }
 
   public parse (s: string): string {
-    return h('div', this.precompile(s)).innerHTML
+    return this.precompile(s).join('')
   }
 
-  private precompile (s: string): Element[] {
+  private precompile (s: string): string[] {
     let key = ''
     let childrenRows: string[] = []
-    const nodes: Element[] = []
+    const nodes: string[] = []
 
     let isInFilter = false
 
@@ -62,31 +61,31 @@ export default class HyperPug {
     const children = c ? this.precompile(c) : undefined
 
     if (key[0] === ':') {
-      return this.buildH(key, null, stripIndent(c))
+      return this.buildH(key, '', stripIndent(c))
     }
 
-    let d: Record<string, string> | null = null
+    let attrs: string = ''
 
     if (key[0] === ':') {
-      return this.buildH(key, null, stripIndent(c))
+      return this.buildH(key, attrs, stripIndent(c))
     }
 
     const { key: k1, dict, suffix, content } = tokenize(key)
 
     if (dict) {
-      d = eqdict(dict)
+      attrs = dict
     }
 
     if (suffix === '.') {
-      return this.buildH(k1, d, stripIndent(c))
+      return this.buildH(k1, attrs, stripIndent(c))
     } else if (suffix === ':') {
-      return this.buildH(k1, d, this.precompile(content))
+      return this.buildH(k1, attrs, this.precompile(content))
     }
 
-    return this.buildH(k1, d, content || children)
+    return this.buildH(k1, attrs, content || children || [])
   }
 
-  private buildH (key: string, attrs: Record<string, string> | null, children?: string | Element[]) {
+  private buildH (key: string, attrs: string, children: string | string[]) {
     if (key[0] === ':') {
       const filterName = key.substr(1)
       const fn = this.filters[filterName]
@@ -98,20 +97,13 @@ export default class HyperPug {
         throw new Error(`Nothing to feed to filter: ${filterName}`)
       }
 
-      return h('div', { innerHTML: fn(children) })
-    }
-
-    attrs = attrs || {}
-    for (const [k, v] of Object.entries(attrs)) {
-      if (!v) {
-        attrs[k] = ''
-      }
+      return h('div', '', fn(children))
     }
 
     try {
-      return h(key, { attrs: attrs || {} }, children)
+      return h(key, attrs, children)
     } catch (e) {
-      return h('div', { attrs: attrs || {} }, children)
+      return h('div', attrs, children)
     }
   }
 }
