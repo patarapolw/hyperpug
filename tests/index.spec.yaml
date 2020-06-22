@@ -34,3 +34,26 @@ HyperPug:
   - name: One liner
     input: ".w-100.mt-3: h3.text-center 天地玄黃，宇宙洪荒。"
     expected: <div class="w-100 mt-3"><h3 class="text-center">天地玄黃，宇宙洪荒。</h3></div>
+  - name: Filtered with space in-between
+    input: |2
+      details
+        summary Aforementioned matter
+        markdown.
+          Something else
+      
+          ```yaml
+          title: Awesome front matter
+          isCool: true
+          numbers:
+            - a-list: 1
+          ```
+    expected: |2
+      <details><summary>Aforementioned matter</summary><markdown>Something else
+
+      ```yaml
+      title: Awesome front matter
+      isCool: true
+      numbers:
+        - a-list: 1
+      ```
+      </markdown></details>

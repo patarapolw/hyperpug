@@ -29,11 +29,11 @@ export default class HyperPug {
     let isInFilter = false
 
     for (const r of stripIndent(s).split('\n')) {
-      if (r[0] && r[0] !== ' ') {
+      if (!r[0] || (r[0] && r[0] !== ' ')) {
         isInFilter = false
       }
 
-      if (/\S/.test(r[0]) && !isInFilter) {
+      if (/\S/.test(r[0] || ' ') && !isInFilter) {
         if (r[0] === ':') {
           isInFilter = true
         }
