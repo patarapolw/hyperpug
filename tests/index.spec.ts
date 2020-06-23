@@ -10,7 +10,7 @@ const hp = new HyperPug()
 describe('HyperPug', () => {
   testCase.HyperPug.forEach((t: any) => {
     it(t.name, () => {
-      assert.strictEqual(hp.parse(t.input).trim(), (t.expected || '').trim())
+      assert.strictEqual(hp.parse(t.input).trim(), t.expected.trim())
     })
   })
 })

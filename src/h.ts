@@ -1,5 +1,7 @@
+import he from 'he'
+
 export const h = (name: string, eqdict: string, children: string | string[]) => {
-  const childrenNodes = typeof children === 'string' ? [children] : children
+  const childrenNodes = typeof children === 'string' ? [he.encode(children)] : children
 
   eqdict = ' ' + eqdict
 
