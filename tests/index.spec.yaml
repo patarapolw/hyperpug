@@ -75,3 +75,8 @@ HyperPug:
         It seems to need a backend to fetch metadata so as to bypass CORS...  I can
         try to create my own (in...
       </pre>
+  - name: Entities
+    input: |
+      h1 I can&#x27;t leave home, even if only for a while.
+    expected: |
+      <h1>I can't leave home, even if only for a while.</h1>
