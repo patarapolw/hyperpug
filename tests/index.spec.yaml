@@ -33,7 +33,7 @@ HyperPug:
     expected: "<div>div hello\ndiv\n  div goodbye</div><div>good idea</div>"
   - name: One liner
     input: ".w-100.mt-3: h3.text-center 天地玄黃，宇宙洪荒。"
-    expected: <div class="w-100 mt-3"><h3 class="text-center">&#x5929;&#x5730;&#x7384;&#x9EC3;&#xFF0C;&#x5B87;&#x5B99;&#x6D2A;&#x8352;&#x3002;</h3></div>
+    expected: <div class="w-100 mt-3"><h3 class="text-center">天地玄黃，宇宙洪荒。</h3></div>
   - name: Filtered with space in-between
     input: |2
       details
@@ -50,12 +50,12 @@ HyperPug:
     expected: |2
       <details><summary>Aforementioned matter</summary><markdown>Something else
 
-      &#x60;&#x60;&#x60;yaml
+      ```yaml
       title: Awesome front matter
       isCool: true
       numbers:
         - a-list: 1
-      &#x60;&#x60;&#x60;
+      ```
       </markdown></details>
   - name: Vue template
     input: div(v-if="isCool" :role="role" @click="doClick")
@@ -69,9 +69,9 @@ HyperPug:
           It seems to need a backend to fetch metadata so as to bypass CORS...  I can
           try to create my own (in...
     expected: |
-      <pre data-template style="display: none;">image: &#x27;https://dev.to/social_previews/article/310429.png&#x27;
-      title: &#x27;Is there a library for better &#x3C;a href&#x3E;&#x27;&#x27;s, like social sharing cards?&#x27;
-      description: &#x3E;-
+      <pre data-template style="display: none;">image: 'https://dev.to/social_previews/article/310429.png'
+      title: 'Is there a library for better &lt;a href&gt;''s, like social sharing cards?'
+      description: &gt;-
         It seems to need a backend to fetch metadata so as to bypass CORS...  I can
         try to create my own (in...
       </pre>
