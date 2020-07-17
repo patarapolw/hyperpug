@@ -56,7 +56,7 @@ section(class="x")
     .red goodbye
   :markdown
     # This is some heading
-br
+
 small Yes, this is a good idea.
 `)
 </script>
