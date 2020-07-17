@@ -1,11 +1,9 @@
-import he from 'he'
-
 export function encodeInnerHTML (s: string) {
   const map: Record<string, string> = {
     '<': '&lt;',
     '>': '&gt;',
   }
-  return he.decode(s).split('').map((c) => map[c] || c).join('')
+  return s.split('').map((c) => map[c] || c).join('')
 }
 
 export const h = (name: string, eqdict: string, children: string | string[]) => {

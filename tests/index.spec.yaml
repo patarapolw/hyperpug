@@ -79,4 +79,4 @@ HyperPug:
     input: |
       h1 I can&#x27;t leave home, even if only for a while.
     expected: |
-      <h1>I can't leave home, even if only for a while.</h1>
+      <h1>I can&#x27;t leave home, even if only for a while.</h1>

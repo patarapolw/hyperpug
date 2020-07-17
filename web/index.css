@@ -21,8 +21,9 @@ body {
 }
 
 .columns {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
   height: 100%;
   width: 100%;
   box-sizing: border-box;
@@ -30,17 +31,12 @@ body {
 
 @media only screen and (max-width: 1000px) {
   .columns {
+    display: flex;
     flex-direction: column;
   }
 
   .view + .view {
     margin-top: 1rem;
-  }
-}
-
-@media screen and (min-width: 1001px) {
-  .view + .view {
-    margin-left: 1rem;
   }
 }
 

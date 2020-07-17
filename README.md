@@ -1,6 +1,6 @@
 # HyperPug
 
-[![npm version](https://badge.fury.io/js/hyperpug.svg)](https://badge.fury.io/js/hyperpug)
+[![npm version](https://badge.fury.io/js/hyperpug.svg)](https://badge.fury.io/js/hyperpug) [![Website shields.io](https://img.shields.io/website-up-down-green-red/https/hyperpug.netlify.app.svg)](https://hyperpug.netlify.app/)
 
 Lighter Pug for browser/Electron. With Pug filters' support.
 

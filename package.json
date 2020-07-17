@@ -28,7 +28,8 @@
     "browserify": "parcel build -d lib -o index.umd.js ./browser.ts",
     "test": "ts-mocha --paths -p tests/tsconfig.json tests/**/*.spec.ts",
     "web": "parcel web/index.html",
-    "deploy": "parcel build --public-url /hyperpug web/index.html && gh-pages -d dist",
+    "predeploy": "parcel build web/index.html",
+    "deploy": "netlify deploy -d dist",
     "prepack": "yarn build && yarn browserify",
     "lint": "eslint '**'"
   },
@@ -48,7 +49,6 @@
     "eslint-plugin-node": ">=9.1.0",
     "eslint-plugin-promise": ">=4.2.1",
     "eslint-plugin-standard": ">=4.0.0",
-    "gh-pages": "^2.2.0",
     "js-yaml": "^3.13.1",
     "mocha": "^6.0.0",
     "parcel-bundler": "^1.12.4",
