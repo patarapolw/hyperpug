@@ -3,12 +3,12 @@ style.
     color: blue;
   }
 
-  .container .red {
-    color: red;
+  section {
+    margin-bottom: 1rem;
   }
 
-  .container {
-    margin-bottom: 1rem;
+  section .red {
+    color: red;
   }
 
   .card {
@@ -25,7 +25,7 @@ h1
   span Made with&nbsp;
   a(href="https://github.com/patarapolw/hyperpug", target="_blank", rel="noopener noreferrer") HyperPug
 
-.container
+section
   div hello
   blockquote
     .red goodbye

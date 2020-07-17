@@ -46,7 +46,11 @@ style.
     color: red;
   }
 
-div(class="x")
+  section {
+    margin-bottom: 1rem;
+  }
+
+section(class="x")
   div hello
   blockquote
     .red goodbye
