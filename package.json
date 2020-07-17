@@ -1,6 +1,6 @@
 {
   "name": "hyperpug",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "license": "MIT",
   "files": [
     "lib",
@@ -32,12 +32,8 @@
     "prepack": "yarn build && yarn browserify",
     "lint": "eslint '**'"
   },
-  "dependencies": {
-    "he": "^1.2.0"
-  },
   "devDependencies": {
     "@types/codemirror": "^0.0.84",
-    "@types/he": "^1.1.1",
     "@types/js-yaml": "^3.12.1",
     "@types/markdown-it": "^10.0.1",
     "@types/mocha": "^5.2.7",
