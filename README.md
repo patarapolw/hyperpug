@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/hyperpug.svg)](https://badge.fury.io/js/hyperpug)
 
-Pug for browser/Electron, based on Hyperscript. With Pug filters' support.
+Lighter Pug for browser/Electron. With Pug filters' support.
 
 ## Usage
 
@@ -18,8 +18,8 @@ console.log(hp.parse(HYPERPUG_STRING))
 ```typescript
 import HyperPug from 'hyperpug'
 const hp = new HyperPug({
-  hidden: (s) => {
-    return `<!-- ${JSON.stringify(s)} -->`
+  cool: (s) => {
+    return `<strong>${s}</strong>`
   }
 })
 
@@ -33,8 +33,8 @@ console.log(hp.parse(HYPERPUG_STRING))
 <script src="https://unpkg.com/hyperpug@:version"></script>
 <script>
 const hp = new HyperPug({
-  hidden: (s) => {
-    return `<!-- ${JSON.stringify(s)} -->`
+  cool: (s) => {
+    return `<strong>${s}</strong>`
   }
 })
 
@@ -43,6 +43,8 @@ document.getElementById("hyperpug").innerHTML = hp.parse(`
     div hello
     div
       div goodbye
+    :cool
+      some cool text
   div good idea
 `)
 </script>

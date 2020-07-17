@@ -18,7 +18,11 @@ editor.setSize('100%', '100%')
 /**
  * @type {import('../src').default}
  */
-var hp = new HyperPug()
+var hp = new HyperPug({
+  cool: (s) => {
+    return `<strong>${s}</strong>`
+  },
+})
 
 function parse (s) {
   const raw = typeof s === 'string' ? s : editor.getValue()

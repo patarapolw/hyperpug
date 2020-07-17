@@ -97,7 +97,7 @@ export default class HyperPug {
         throw new Error(`Nothing to feed to filter: ${filterName}`)
       }
 
-      return h('div', '', fn(children))
+      return h('div', '', [fn(children)])
     }
 
     try {
