@@ -48,7 +48,7 @@ style.
 
 div(class="x")
   div hello
-  div
+  blockquote
     .red goodbye
   :markdown
     # This is some heading

@@ -1,21 +1,35 @@
 style.
-  .red {
+  h1 {
+    color: blue;
+  }
+
+  .container .red {
     color: red;
+  }
+
+  .container {
+    margin-bottom: 1rem;
   }
 
   small {
     font-size: 0.3rem;
   }
 
-div(class="x")
+h1
+  span Made with&nbsp;
+  a(href="https://github.com/patarapolw/hyperpug", target="_blank", rel="noopener noreferrer") HyperPug
+
+.container
   div hello
-  div
+  blockquote
     .red goodbye
   :markdown
-    # This is some heading
+    ## This is some heading
 
     ```pug parsed
     .red And you can embed HyperPug inside it.
     ```
-br
+
+.red Outside the container is not red.
+
 small Yes, this is a good idea.
