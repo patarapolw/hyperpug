@@ -57,5 +57,10 @@
   },
   "resolutions": {
     "lodash": "^4.17.19"
+  },
+  "engines": {
+    "node": "12",
+    "yarn": "1.x",
+    "npm": "please-use-yarn"
   }
 }

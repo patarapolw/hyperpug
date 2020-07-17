@@ -11,6 +11,12 @@ style.
     margin-bottom: 1rem;
   }
 
+  .card {
+    padding: 1em;
+    border: 1px solid gray;
+    box-sizing: border-box;
+  }
+
   small {
     font-size: 0.3rem;
   }
@@ -29,7 +35,7 @@ h1
     ```pug parsed
     .red And you can embed HyperPug inside it.
     ```
-
-.red Outside the container is not red.
+.card
+  .red Outside the container is not red.
 
 small Yes, this is a good idea.
