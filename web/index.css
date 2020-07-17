@@ -3,10 +3,14 @@ html, body {
   padding: 0;
 }
 
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
 .view {
-  width: 100%;
+  flex-grow: 1;
   border: 1px solid lightgray;
-  min-height: 40vh;
   overflow: scroll;
   margin: 0.2rem;
 }
@@ -19,14 +23,24 @@ html, body {
 .columns {
   display: flex;
   flex-direction: row;
-  max-height: 100vh;
-  max-width: 100vw;
+  height: 100%;
+  width: 100%;
   box-sizing: border-box;
 }
 
-@media only screen and (max-width: 770px) {
+@media only screen and (max-width: 1000px) {
   .columns {
     flex-direction: column;
+  }
+
+  .view + .view {
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (min-width: 1001px) {
+  .view + .view {
+    margin-left: 1rem;
   }
 }
 

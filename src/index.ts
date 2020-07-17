@@ -1,5 +1,4 @@
-import { stripIndent } from 'indent-utils'
-
+import { stripIndent } from './indent'
 import { tokenize } from './tokenize'
 import { h } from './h'
 

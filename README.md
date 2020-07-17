@@ -15,11 +15,13 @@ console.log(hp.parse(HYPERPUG_STRING))
 
 ## Usage with filters
 
+Filters are normalized for Markdown and other indented languages are well.
+
 ```typescript
 import HyperPug from 'hyperpug'
 const hp = new HyperPug({
-  cool: (s) => {
-    return `<strong>${s}</strong>`
+  markdown: (s) => {
+    return markdownMaker(s)
   }
 })
 
@@ -30,22 +32,28 @@ console.log(hp.parse(HYPERPUG_STRING))
 
 ```html
 <div id="hyperpug"></div>
-<script src="https://unpkg.com/hyperpug@:version"></script>
+<script src="https://unpkg.com/hyperpug"></script>
 <script>
 const hp = new HyperPug({
-  cool: (s) => {
-    return `<strong>${s}</strong>`
+  markdown: (s) => {
+    return markdownMaker(s)
   }
 })
 
 document.getElementById("hyperpug").innerHTML = hp.parse(`
-  div(class="x")
-    div hello
-    div
-      div goodbye
-    :cool
-      some cool text
-  div good idea
+style.
+  .red {
+    color: red;
+  }
+
+div(class="x")
+  div hello
+  div
+    .red goodbye
+  :markdown
+    # This is some heading
+br
+small Yes, this is a good idea.
 `)
 </script>
 ```

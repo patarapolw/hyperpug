@@ -1,0 +1,17 @@
+style.
+  .red {
+    color: red;
+  }
+
+div(class="x")
+  div hello
+  div
+    .red goodbye
+  :markdown
+    # This is some heading
+
+    ```pug parsed
+    .red And you can embed HyperPug inside it.
+    ```
+br
+small Yes, this is a good idea.
