@@ -8,6 +8,10 @@ body {
   width: 100vw;
 }
 
+.github-corner svg {
+  z-index: 1000;
+}
+
 .view {
   flex-grow: 1;
   border: 1px solid lightgray;
@@ -31,12 +35,8 @@ body {
 
 @media only screen and (max-width: 1000px) {
   .columns {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .view + .view {
-    margin-top: 1rem;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: none;
   }
 }
 

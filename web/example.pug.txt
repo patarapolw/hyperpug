@@ -3,6 +3,10 @@ style.
     color: red;
   }
 
+  small {
+    font-size: 0.3rem;
+  }
+
 div(class="x")
   div hello
   div
